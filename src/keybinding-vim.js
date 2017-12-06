@@ -956,6 +956,13 @@ dom.importCssString(".normal-mode .ace_cursor{\
     { keys: ':', type: 'ex' }
   ];
   var defaultExCommandMap = [
+    // NodeWars START
+    { name: 'test', shortName: 'tst' },
+    { name: 'refac', shortName: 'ref' },
+    { name: 'remove', shortName: 'rm' },
+    { name: 'make', shortName: 'mak' },
+    { name: 'q' },
+    // NodeWars END
     { name: 'colorscheme', shortName: 'colo' },
     { name: 'map' },
     { name: 'imap', shortName: 'im' },
@@ -4495,6 +4502,20 @@ dom.importCssString(".normal-mode .ace_cursor{\
     };
 
     var exCommands = {
+      //TODO HACKY
+      test: function() {sendMsg("test")},
+
+      remove: function() {sendMsg("rm")},
+
+      refac: function() {sendMsg("refac")},
+
+      make: function() {sendMsg("make")},
+
+      q: function() {
+        terminal.focus()
+        terminal.echo("stuff")
+      },
+
       colorscheme: function(cm, params) {
         if (!params.args || params.args.length < 1) {
           showConfirm(cm, cm.getOption('theme'));
